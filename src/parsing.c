@@ -6,7 +6,7 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 12:31:07 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/08 20:32:59 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/08 23:13:20 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ bool	are_valid_int(int argc, char **argv)
 	while (i < (size_t)argc)
 	{
 		j = 0;
-		while (argv[i][j] == ' ')
-			j++;
-		if (!ft_is_in_bounds_int(&argv[i][j]))
+		while (argv[i] && argv[i][j] == ' ')
+			j++;	
+		if (!argv[i] || !ft_is_in_bounds_int(&argv[i][j]))
 			return (FALSE);
 		i++;
 	}
@@ -67,6 +67,8 @@ int countargs(char **argv)
 	while(argv[i])
 	{
 		n = n + ft_count_substr(argv[i],' ');
+		if (!ft_count_substr(argv[i],' '))
+			n++;
 		i++;
 	}
 	return(n);
