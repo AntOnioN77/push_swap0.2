@@ -2,6 +2,8 @@
 #include "circular_array.h"
 #include "libft/headers/ring.h"
 
+#include <stdio.h>//borrar
+
 
 /*retorna el numero, que quedara en la nºesima posicion cuando el stack esté ordenado*/
 int find_nth(t_ring *ring, int n_elements, int nth)
@@ -93,6 +95,8 @@ int is_correlative(t_ring *a, int smalest)
 	int check;
 
 	level = ring_find_value(a, smalest);
+//	if (level < 0)
+//		level = a->fill - level;
 	check = a->fill;
 	while (check > 1)
 	{
@@ -119,12 +123,12 @@ void preorder(t_ring *a, t_ring *b)
 
 	bigest = ring_find_bigest(a);
 	smalest = ring_find_smallest(a);
-	//printf("is correlative %d", is_correlative(a, smalest));
-	if(a->fill > 70)
+//printf("is correlative %d", is_correlative(a, smalest));
+	if (!is_correlative(a, smalest))
 	{
-		if (!is_correlative(a, smalest))
+		if(a->fill > 70)
 			preorder_many(a, b, bigest, smalest);
+		else
+			preorder_few(a, b, bigest, smalest);
 	}
-	else
-		preorder_few(a, b, bigest, smalest);
 }
