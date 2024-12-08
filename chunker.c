@@ -98,14 +98,14 @@ int is_correlative(t_ring *a, int smalest)
 //	if (level < 0)
 //		level = a->fill - level;
 	check = a->fill;
-	while (check > 1)
+	while (check > 0)
 	{
 		level++;
-	//printf("LEVEL %d\n", level);
+//printf("LEVEL %d\n", level);
 		if (ring_get_level(a, level - 1) > ring_get_level(a, level))
 		{
-	//		printf("-----BREAK content lvl:%d y %d\n", ring_get_level(a, level - 1) ,ring_get_level(a, level));
-	//		printf("headindex:%d, tail index%d\n",a->head, a->tail);
+//printf("-----BREAK content lvl:%d y %d\n", ring_get_level(a, level - 1) ,ring_get_level(a, level));
+//printf("headindex:%d, tail index%d\n",a->head, a->tail);
 			break;
 		}
 	//	printf("compara %d con %d\n", ring_get_level(a, level - 1), ring_get_level(a, level));
@@ -123,7 +123,7 @@ void preorder(t_ring *a, t_ring *b)
 
 	bigest = ring_find_bigest(a);
 	smalest = ring_find_smallest(a);
-//printf("is correlative %d", is_correlative(a, smalest));
+//printf("is correlative %d\n", is_correlative(a, smalest));
 	if (!is_correlative(a, smalest))
 	{
 		if(a->fill > 70)
