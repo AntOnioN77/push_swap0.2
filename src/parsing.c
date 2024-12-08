@@ -6,14 +6,13 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 12:31:07 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/08 17:42:10 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/08 19:36:02 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/headers/ring.h"
 #include "../libft/headers/parsing.h"
 #include <limits.h>
-#include <stdio.h>
 
 /*Checks that all values passed as arguments are convertible to int,
 tolerates only one sign(+-), tolerates spaces at the beginning of
@@ -24,13 +23,14 @@ bool	are_valid_int(int argc, char **argv)
 	size_t	j;
 
 	i = 0;
-	while (++i < (size_t)argc)
+	while (i < (size_t)argc)
 	{
 		j = 0;
 		while (argv[i][j] == ' ')
 			j++;
 		if (!ft_is_in_bounds_int(&argv[i][j]))
 			return (FALSE);
+		i++;
 	}
 	return (TRUE);
 }
@@ -135,14 +135,11 @@ void	parsargs(int argc, char **argv, t_ring **a, t_ring **b)
 	char **args;
 
 	n_args = countargs(argv);
-	if (n_args == 1)
+	if (n_args == 0)
 		exit (0);
 	args = malloc((n_args + 1) * sizeof(char *));
 	ft_bzero(args, (n_args + 1) * sizeof(char*));
 	split_all(argc, argv, args);
-printf("args[0] %s \n", args[0]);
-printf("args[1] %s \n", args[1]);
-printf("args[2] %s \n", args[2]);
 	if (!are_valid_int(n_args, args))
 	{
 		free_all(args);
@@ -156,13 +153,6 @@ printf("args[2] %s \n", args[2]);
 		exit(1);
 	}
 	fill_stack(*a, n_args, args);
-#include <stdio.h>
-printf("head%d\n", ring_get_head(*a));
-printf("head at:%d\n", (*a)->head);
-printf("tail%d\n", ring_get_tail(*a));
-printf("tail at:%d\n", (*a)->tail);
-printf("fill%d\n", (*a)->fill);
-printf("n_args %d\n", n_args);
 	free_all(args);
 	if (ring_has_duplicates(*a))
 	{
