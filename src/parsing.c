@@ -6,7 +6,7 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 12:31:07 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/08 23:13:20 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:57:13 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,20 +107,15 @@ void split_all(int argc, char **argv, char **args)
 	while(i < argc)
 	{
 		j = 0;
-//#include <stdio.h>
-//printf("108 \n");
 		tmp = ft_split(argv[i], ' ');
 		if(tmp == NULL)
 		{
-//printf("112 \n");
 			free_all(args);
-			exit(1);
+			exit(EXIT_FAILURE);
 		}
 		while (tmp[j])
 		{
 			args[q] = tmp[j];
-
-//printf("args[%d] %s \n", q, args[q]);
 			q++;
 			j++;			
 		}
@@ -130,6 +125,13 @@ void split_all(int argc, char **argv, char **args)
 	}
 }
 
+void handle_error(void *to_free, void (*free_func)(void *))
+{
+	if (to_free != NULL)
+		free_func(to_free);
+	write(2, "Error\n", 6);
+	exit (EXIT_FAILURE);
+}
 //separar el codigo de inicializacion de pilas del parseo
 void	parsargs(int argc, char **argv, t_ring **a, t_ring **b)
 {
@@ -138,33 +140,20 @@ void	parsargs(int argc, char **argv, t_ring **a, t_ring **b)
 
 	n_args = countargs(argv);
 	if (n_args == 0)
-		exit (0);
+		exit (EXIT_FAILURE);
 	args = malloc((n_args + 1) * sizeof(char *));
 	ft_bzero(args, (n_args + 1) * sizeof(char*));
 	split_all(argc, argv, args);
 	if (!are_valid_int(n_args, args))
-	{
-		free_all(args);
-		write(2, "Error\n", 6);
-		exit (1);
-	}
+		handle_error(args, (void (*)(void *))free_all);
 	*a = ring_init(n_args);
 	if (*a == NULL)
-	{
-		free_all(args);
-		exit(1);
-	}
+		handle_error(args, (void (*)(void *))free_all);
 	fill_stack(*a, n_args, args);
 	free_all(args);
 	if (ring_has_duplicates(*a))
-	{
-		ring_free(*a);
-		write(2, "Error\n", 6);
-		exit (1);
-	}
+		handle_error(*a, (void (*)(void *))ring_free);
 	*b = ring_init(n_args);
 	if (*b == NULL)
-	{
 		ring_free(*a);
-	}
 }
