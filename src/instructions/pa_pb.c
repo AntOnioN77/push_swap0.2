@@ -6,7 +6,7 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:45:55 by antofern          #+#    #+#             */
-/*   Updated: 2024/09/02 12:57:59 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:38:09 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	pa(t_ring *b, t_ring *a)
 {
-
 	if (ring_push(b, a) == ERROR)
 		return ;
 	write(1, "pa\n", 3);

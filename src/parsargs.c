@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsargs.c                                          :+:      :+:    :+:   */
+/*   parsargs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 12:31:07 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 11:31:06 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:00:27 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_bool	are_valid_int(int argc, char **argv)
 	{
 		j = 0;
 		while (argv[i] && argv[i][j] == ' ')
-			j++;	
+			j++;
 		if (!argv[i] || !ft_is_in_bounds_int(&argv[i][j]))
 			return (FALSE);
 		i++;
@@ -36,56 +36,56 @@ t_bool	are_valid_int(int argc, char **argv)
 	return (TRUE);
 }
 
-static int	fill_stack(t_ring *arr, int argc, char **argv)
+static int	fill_stack(t_ring *arr, int n_args, char **args)
 {
 	int	i;
 
 	i = 0;
-	while (i < argc)// NECESARIO?????
+	while (i < n_args)
 	{
 		arr->buff[i] = 0;
 		i++;
 	}
-	i = argc;
+	i = n_args;
 	while (i > 0)
 	{
-		ring_add_head(arr, ft_atoi(argv[i - 1]));
+		ring_add_head(arr, ft_atoi(args[i - 1]));
 		i--;
 	}
 	return (OK);
 }
 
-int countargs(char **argv)
+int	countargs(char **argv)
 {
-	int n;
+	int	n;
 	int	i;
 
 	n = 0;
 	i = 1;
-	while(argv[i])
+	while (argv[i])
 	{
-		n = n + ft_count_substr(argv[i],' ');
-		if (!ft_count_substr(argv[i],' '))
+		n = n + ft_count_substr(argv[i], ' ');
+		if (!ft_count_substr(argv[i], ' '))
 			n++;
 		i++;
 	}
-	return(n);
+	return (n);
 }
 
-void split_all(int argc, char **argv, char **args)
+void	split_all(int argc, char **argv, char **args)
 {
-	int	i;
-	int j;
-	int q;
-	char **tmp;
+	int		i;
+	int		j;
+	int		q;
+	char	**tmp;
 
 	i = 1;
 	q = 0;
-	while(i < argc)
+	while (i < argc)
 	{
 		j = 0;
 		tmp = ft_split(argv[i], ' ');
-		if(tmp == NULL)
+		if (tmp == NULL)
 		{
 			ft_free_split(args);
 			exit(EXIT_FAILURE);
@@ -94,7 +94,7 @@ void split_all(int argc, char **argv, char **args)
 		{
 			args[q] = tmp[j];
 			q++;
-			j++;			
+			j++;
 		}
 		free(tmp);
 		i++;
@@ -103,14 +103,14 @@ void split_all(int argc, char **argv, char **args)
 
 void	parsargs(int argc, char **argv, t_ring **a, t_ring **b)
 {
-	int n_args;
-	char **args;
+	int		n_args;
+	char	**args;
 
 	n_args = countargs(argv);
 	if (n_args == 0)
 		exit (EXIT_FAILURE);
 	args = malloc((n_args + 1) * sizeof(char *));
-	ft_bzero(args, (n_args + 1) * sizeof(char*));
+	ft_bzero(args, (n_args + 1) * sizeof(char *));
 	split_all(argc, argv, args);
 	if (!are_valid_int(n_args, args))
 		handle_error(args, (void (*)(void *))ft_free_split);

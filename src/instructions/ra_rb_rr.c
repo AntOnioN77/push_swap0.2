@@ -6,11 +6,9 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:54:45 by antofern          #+#    #+#             */
-/*   Updated: 2024/09/02 12:57:15 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:39:01 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "../../libft/headers/ring.h"
 
@@ -29,7 +27,7 @@ void	rb(t_ring *b)
 		return ;
 	if (ring_rotate(b) == ERROR)
 		return ;
-	write(1,"rb\n", 3);
+	write(1, "rb\n", 3);
 }
 
 void	rr(t_ring *a, t_ring *b)

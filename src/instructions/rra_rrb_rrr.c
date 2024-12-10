@@ -6,7 +6,7 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:53:57 by antofern          #+#    #+#             */
-/*   Updated: 2024/09/02 12:57:22 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:39:15 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	rrb(t_ring *b)
 		return ;
 	write(1, "rrb\n", 4);
 }
-
 
 void	rrr(t_ring *a, t_ring *b)
 {

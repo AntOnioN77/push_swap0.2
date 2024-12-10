@@ -3,7 +3,7 @@
 #include "libft/headers/ring.h"
 
 //envia a la pila b el tercer chunk, acumulado en el back de la pila a*/
-void pb_lasts(t_ring *a, t_ring *b, int bigest, int smalest)
+void	pb_lasts(t_ring *a, t_ring *b, int bigest, int smalest)
 {
 	while (a->fill > 2)
 	{
@@ -15,11 +15,11 @@ void pb_lasts(t_ring *a, t_ring *b, int bigest, int smalest)
 }
 
 //Envia a la pila b tres chunks, con los valores medios maximos y minimos.
-void preorder_many(t_ring *a, t_ring *b, int bigest, int smalest)
+void	preorder_many(t_ring *a, t_ring *b, int bigest, int smalest)
 {
-	int first_terctil;
-	int second_terctil;
-	int check;
+	int	first_terctil;
+	int	second_terctil;
+	int	check;
 
 	first_terctil = ring_find_nth(a, a->fill, a->fill / 3);
 	second_terctil = ring_find_nth(a, a->fill, (a->fill / 3) * 2);
@@ -28,21 +28,21 @@ void preorder_many(t_ring *a, t_ring *b, int bigest, int smalest)
 	{
 		if (ring_get_head(a) == bigest || ring_get_head(a) == smalest)
 			ra(a);
-		else if (ring_get_head(a) > second_terctil) //mayores
+		else if (ring_get_head(a) > second_terctil)
 			ra(a);
-		else if (ring_get_head(a) > first_terctil) //medios
- 		{
+		else if (ring_get_head(a) > first_terctil)
+		{
 			pb(a, b);
 			rb(b);
 		}
-		else if (ring_get_head(a) <= first_terctil) // mas bajos
+		else if (ring_get_head(a) <= first_terctil)
 			pb(a, b);
 		check --;
 	}
 	pb_lasts(a, b, bigest, smalest);
 }
 
-void preorder_few(t_ring *a, t_ring *b, int bigest, int smalest)
+void	preorder_few(t_ring *a, t_ring *b, int bigest, int smalest)
 {
 	while (a->fill > 3)
 	{
@@ -51,17 +51,19 @@ void preorder_few(t_ring *a, t_ring *b, int bigest, int smalest)
 		else
 			pb(a, b);
 	}
-	
-	if (!((ring_get_level(a, 0) < ring_get_level(a, 1) && ring_get_level(a, 1) < ring_get_level(a, 2)) ||
-	(ring_get_level(a, 1) < ring_get_level(a, 2) && ring_get_level(a, 2) < ring_get_level(a, 0)) ||
-	(ring_get_level(a, 2) < ring_get_level(a, 0) && ring_get_level(a, 0) < ring_get_level(a, 1))))
+	if (!((ring_get_level(a, 0) < ring_get_level(a, 1)
+				&& ring_get_level(a, 1) < ring_get_level(a, 2))
+			|| (ring_get_level(a, 1) < ring_get_level(a, 2)
+				&& ring_get_level(a, 2) < ring_get_level(a, 0))
+			|| (ring_get_level(a, 2) < ring_get_level(a, 0)
+				&& ring_get_level(a, 0) < ring_get_level(a, 1))))
 		sa(a);
 }
 
-int is_correlative(t_ring *a, int smalest)
+int	is_correlative(t_ring *a, int smalest)
 {
-	t_level level;
-	int check;
+	t_level	level;
+	int		check;
 
 	level = ring_find_value(a, smalest);
 
@@ -70,7 +72,7 @@ int is_correlative(t_ring *a, int smalest)
 	{
 		level++;
 		if (ring_get_level(a, level - 1) > ring_get_level(a, level))
-			break;
+			break ;
 		check--;
 	}
 	if (check == 1)
@@ -78,10 +80,10 @@ int is_correlative(t_ring *a, int smalest)
 	return (0);
 }
 
-void preorder(t_ring *a, t_ring *b)
+void	preorder(t_ring *a, t_ring *b)
 {
-	int bigest;
-	int smalest;
+	int	bigest;
+	int	smalest;
 
 	bigest = ring_find_bigest(a);
 	smalest = ring_find_smallest(a);
