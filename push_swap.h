@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   circular_array.h                                   :+:      :+:    :+:   */
+/*   push_swap.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CIRCULAR_ARRAY_H
-#define CIRCULAR_ARRAY_H
+#ifndef PUSH_SWAP_H
+#define PUSH_SWAP_H
 
 #include <stddef.h>
 #include <stddef.h>
