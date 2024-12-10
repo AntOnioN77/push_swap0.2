@@ -18,7 +18,7 @@
 /*Checks that all values passed as arguments are convertible to int,
 tolerates only one sign(+-), tolerates spaces at the beginning of
 each string but no other characters, accepts only decimal notation*/
-bool	are_valid_int(int argc, char **argv)
+t_bool	are_valid_int(int argc, char **argv)
 {
 	size_t	i;
 	size_t	j;
@@ -98,7 +98,6 @@ void split_all(int argc, char **argv, char **args)
 		}
 		free(tmp);
 		i++;
-
 	}
 }
 

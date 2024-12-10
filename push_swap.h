@@ -64,8 +64,13 @@ t_place	setup_place(t_ring *stack, t_level level, char stack_name);
 void	find_rigth_course(t_ring *stack_a, t_ring *stack_b ,t_course *best_course);
 void	clean_course(t_course *course);
 void	preorder(t_ring *a, t_ring *b);
-bool	are_valid_int(int argc, char **argv);
+t_bool	are_valid_int(int argc, char **argv);
 void	parsargs(int argc, char **argv, t_ring **a, t_ring **b);
 void	handle_error(void *to_free, void (*free_func)(void *));
+t_level	find_place_for(t_ring *stack_a, int n);
+t_place	setup_place(t_ring *stack, t_level level, char stack_name);
+void	clean_course(t_course *course);
+void	try_rr_way(t_place deeper , t_place higher, t_course *course);
+void	try_rrr_way(t_place place_a , t_place place_b, t_course *course);
 
 #endif /* CIRCULAR_ARRAY_H */

@@ -6,7 +6,8 @@ DBGFLAGS = -g3
 LDFLAGS = -L ./libft -lft
 SOURCES = src/preorder.c src/find_right_course.c main.c\
 src/instructions/sa_sb_ss.c src/instructions/pa_pb.c src/instructions/ra_rb_rr.c\
-src/instructions/rra_rrb_rrr.c src/parsargs.c src/handle_error.c
+src/instructions/rra_rrb_rrr.c src/parsargs.c src/handle_error.c\
+src/find_right_curse_utils.c
 OBJECTS = $(SOURCES:.c=.o)
 HEADERS = libft/headers/libft.h libft/headers/ring.h push_swap.h
 

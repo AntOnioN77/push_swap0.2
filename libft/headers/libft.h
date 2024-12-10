@@ -15,16 +15,18 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef int bool;
-#define FALSE 0
-#define TRUE 1
-#define ERROR 1
-#define OK 0
+# define FALSE 0
+# define TRUE 1
+# define ERROR 1
+# define OK 0
+
+typedef int	t_bool;
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);

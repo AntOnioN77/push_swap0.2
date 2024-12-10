@@ -6,18 +6,19 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:33:27 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 12:33:46 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:22:55 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/ring.h"
 
-/*retorna el numero, que quedara en la nºesima posicion cuando el stack esté ordenado*/
-int ring_find_nth(t_ring *ring, int n_elements, int nth)
+/*retorna el numero, que quedara en la nºesima posicion cuando el stack esté
+ordenado*/
+int	ring_find_nth(t_ring *ring, int n_elements, int nth)
 {
-	int i;
-	int j;
-	int counter;
+	int	i;
+	int	j;
+	int	counter;
 
 	j = 0;
 	while (j < n_elements)
@@ -30,7 +31,7 @@ int ring_find_nth(t_ring *ring, int n_elements, int nth)
 				counter++;
 			i++;
 		}
-		if(counter == nth)
+		if (counter == nth)
 			return (ring_get_level(ring, j));
 		j++;
 	}

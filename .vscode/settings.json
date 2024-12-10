@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"cstdlib": "c",
-		"ring.h": "c"
+		"ring.h": "c",
+		"libft.h": "c"
 	}
 }
