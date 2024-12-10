@@ -2,35 +2,6 @@
 #include "push_swap.h"
 #include "libft/headers/ring.h"
 
-#include <stdio.h>//borrar
-
-
-/*retorna el numero, que quedara en la nºesima posicion cuando el stack esté ordenado*/
-int find_nth(t_ring *ring, int n_elements, int nth)
-{
-	int i;
-	int j;
-	int counter;
-
-	j = 0;
-	while (j < n_elements)
-	{
-		i = 0;
-		counter = 0;
-		while (i < n_elements)
-		{
-			if (ring_get_level(ring, j) > ring_get_level(ring, i))
-				counter++;
-			i++;
-		}
-		if(counter == nth)
-			return (ring_get_level(ring, j));
-		j++;
-	}
-	return (0);
-}
-
-
 //envia a la pila b el tercer chunk, acumulado en el back de la pila a*/
 void pb_lasts(t_ring *a, t_ring *b, int bigest, int smalest)
 {
@@ -50,8 +21,8 @@ void preorder_many(t_ring *a, t_ring *b, int bigest, int smalest)
 	int second_terctil;
 	int check;
 
-	first_terctil = find_nth(a, a->fill, a->fill / 3);
-	second_terctil = find_nth(a, a->fill, (a->fill / 3) * 2);
+	first_terctil = ring_find_nth(a, a->fill, a->fill / 3);
+	second_terctil = ring_find_nth(a, a->fill, (a->fill / 3) * 2);
 	check = a->fill;
 	while (check > 0)
 	{
@@ -114,7 +85,6 @@ void preorder(t_ring *a, t_ring *b)
 
 	bigest = ring_find_bigest(a);
 	smalest = ring_find_smallest(a);
-//printf("is correlative %d\n", is_correlative(a, smalest));
 	if (!is_correlative(a, smalest))
 	{
 		if(a->fill > 70)

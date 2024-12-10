@@ -66,5 +66,6 @@ void	clean_course(t_course *course);
 void	preorder(t_ring *a, t_ring *b);
 bool	are_valid_int(int argc, char **argv);
 void	parsargs(int argc, char **argv, t_ring **a, t_ring **b);
+void	handle_error(void *to_free, void (*free_func)(void *));
 
 #endif /* CIRCULAR_ARRAY_H */

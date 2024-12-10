@@ -12,6 +12,7 @@
 
 #include "../libft/headers/ring.h"
 #include "../libft/headers/parsing.h"
+#include "../push_swap.h"
 #include <limits.h>
 
 /*Checks that all values passed as arguments are convertible to int,
@@ -34,7 +35,6 @@ bool	are_valid_int(int argc, char **argv)
 	}
 	return (TRUE);
 }
-
 
 static int	fill_stack(t_ring *arr, int argc, char **argv)
 {
@@ -72,8 +72,6 @@ int countargs(char **argv)
 	return(n);
 }
 
-//retorna 1 si 
-
 void split_all(int argc, char **argv, char **args)
 {
 	int	i;
@@ -98,18 +96,10 @@ void split_all(int argc, char **argv, char **args)
 			q++;
 			j++;			
 		}
-		free(tmp); //libera solo el array de cadenas creado por split, pero no las propias cadenas, que ahora estan referenciadas en argv
+		free(tmp);
 		i++;
 
 	}
-}
-
-void handle_error(void *to_free, void (*free_func)(void *))
-{
-	if (to_free != NULL)
-		free_func(to_free);
-	write(2, "Error\n", 6);
-	exit (EXIT_FAILURE);
 }
 
 void	parsargs(int argc, char **argv, t_ring **a, t_ring **b)
