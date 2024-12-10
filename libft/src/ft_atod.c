@@ -6,14 +6,15 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 14:24:02 by antofern          #+#    #+#             */
-/*   Updated: 2024/08/22 10:39:12 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:39:30 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*______________________IMPORTANT NOTICE!!!____________________________________
 -This function is only tested to work in a certain context,
 may not be valid for a certain range of values ​​or decimals.
--Does not process exponents or scientific notation*/
+-Does not process exponents or scientific notation
+_____________________________________________________________________________*/
 #include <stdio.h>
 #include <stdlib.h>
 

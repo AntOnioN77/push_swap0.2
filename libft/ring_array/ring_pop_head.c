@@ -6,16 +6,16 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:49:16 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 17:29:49 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:37:06 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/ring.h"
 #include "../headers/libft.h"
 
-/*Si la pila queda vacia tras hacer pop `if (ring->fill == 0)`, compensamos que
-ring_add_head() añade en buff[head -1], de esta manera logramos que el primer
-elemento que se insertase a continuacion sea a la vez head y tail.*/
+/* If the stack becomes empty after popping `if (ring->fill == 0)`, we
+compensate for ring_add_head() adding to buff[head -1], thus ensuring that the
+first element inserted afterwards becomes both head and tail. */
 int	ring_pop_head(t_ring *ring)
 {
 	if (ring->fill > 0)

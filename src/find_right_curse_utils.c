@@ -6,17 +6,15 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 15:31:38 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/11 00:20:26 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:48:22 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*Busca en stack_a, un lugar donde encajar n. de tal manera que quede x < n < y.
-Retorna el nivel que deberiamos hacer rotar hasta el top antes de colocar n
-encima.
-El stack debe contener al menos el numero mas grande y el numero mas pequeño
-de la lista */
+/* Searches in stack_a for a place to fit n, such that x < n < y.
+Returns the level we should rotate to the top before placing n on top.
+The stack must contain at least the largest and smallest number in the list */
 t_level	find_place_for(t_ring *stack_a, int n)
 {
 	int	i;
@@ -47,20 +45,20 @@ t_place	setup_place(t_ring *stack, t_level level, char stack_name)
 	return (new_place);
 }
 
-/*Inicializa t_course. sync_rotation() y async_rotation() usan esta funcion y
-realizan una comparacion con course->steps nada mas inicializarla, por eso
-inicializamos con course->steps en el peor valor posible, para asegurar que
-los elementos recibira al menos una reaseignacion de valores*/
+/* Initializes t_course. sync_rotation() and async_rotation() use this function
+and perform a comparison with course->steps right after initializing it, which
+is why we initialize with course->steps at the worst possible value, to ensure
+that the elements will receive at least one reassignment of values */
 void	clean_course(t_course *course)
 {
 	ft_memset(course, 0, sizeof(t_course));
 	course->steps = INT_MAX;
 }
 
-//no separar esta funcion de sync_rotation()
-/*Asigna a <course> los pasos necesarios para situar tanto deeper como higher
-en el head de sus respectivos stacks. Y lo hace con rotaciones no-inversas, y
-tratando de maximizar el numero de rotaciones simultaneas (rr)*/
+
+/* Assigns to <course> the steps necessary to place both deeper and higher
+at the head of their respective stacks. It does this with non-reverse rotations,
+trying to maximize the number of simultaneous rotations (rr) */
 void	try_rr_way(t_place deeper, t_place higher, t_course *course)
 {
 	course->steps = deeper.level + 1;
@@ -81,9 +79,9 @@ void	try_rr_way(t_place deeper, t_place higher, t_course *course)
 	course->pa = 1;
 }
 
-/*Asigna a <course> los pasos necesarios para situar tanto <a> como <place_b>
-en el head de sus respectivos stacks. Y lo hace con rotaciones inversas, y
-tratando de maximizar el numero de rotaciones simultaneas (rrr)*/
+/* Assigns to <course> the steps necessary to place both <place_a> and <place_b>
+at the head of their respective stacks. It does this with reverse rotations,
+trying to maximize the number of simultaneous rotations (rrr) */
 void	try_rrr_way(t_place place_a, t_place place_b, t_course *course)
 {
 	if (place_a.reverse_level > place_b.reverse_level)

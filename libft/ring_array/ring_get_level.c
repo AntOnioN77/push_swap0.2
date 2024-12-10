@@ -6,14 +6,14 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 12:56:45 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 17:26:14 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:32:52 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/ring.h"
 
-/*retorna el valor contenido en el nºesimo elemento de la lista, considerando
-que el nº0 es ring->buff[ring->head]*/
+/* returns the value contained in the nth element of the list, considering
+that the 0th element is ring->buff[ring->head] */
 int	ring_get_level(const t_ring *ring, t_level level)
 {
 	int	index;

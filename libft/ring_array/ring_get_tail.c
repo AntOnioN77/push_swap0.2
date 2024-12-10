@@ -6,13 +6,13 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:45:45 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 17:26:31 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:33:10 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/ring.h"
 
-/*Retorna el valor contenido en el último elemento del array*/
+/*Returns the value contained in the last element of the array*/
 int	ring_get_tail(t_ring *ring)
 {
 	if (ring->fill == 0)

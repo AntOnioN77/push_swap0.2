@@ -6,15 +6,15 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 16:54:36 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 10:59:49 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:50:26 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/headers/ring.h"
 
-/*Recive best_course, con las instrucciones necesarias para colocar el
-siguiente elemento y las lleva a cabo*/
+/*Receives best_course, with the necessary instructions to place the
+next element and executes them*/
 static void	take_course(t_course *course, t_ring *a, t_ring *b)
 {
 	int	i;
@@ -42,8 +42,8 @@ static void	take_course(t_course *course, t_ring *a, t_ring *b)
 		pa(b, a);
 }
 
-/*Rota la pila A hasta situar el numero mas pequeño en la parte superior.
-Lo hace por el camino mas corto (con ra o rra)*/
+/* Rotates stack A to place the smallest number at the top.
+It does this by the shortest path (using ra or rra) */
 static void	raise_head(t_ring *a)
 {
 	t_level	first_in_level;

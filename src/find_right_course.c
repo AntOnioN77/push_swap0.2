@@ -6,7 +6,7 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:34:49 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 23:57:49 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:45:11 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include "libft/headers/libft.h"
 #include "libft/headers/ring.h"
 
-/*Almacena temporalmente en this_course el curso necesario para rotar los stacks
-a y b hasta la posicion place_a para el stack A y hasta la posicion place_b
-para el stack B, tratando de rotar ambas pilas en la misma direccion.
-primero emula rotar en sentido normal con try_rr_way() y despues en sentido
-inverso con try_rrr_way. Amabas son comparadas sucesivamente con best_course,
-si el numero de steps necesarios es inferior sobreescribe best_course con
-this_course*/
+/*Temporarily stores in this_course the course needed to rotate stacks
+a and b to the position place_a for stack A and to the position place_b
+for stack B, trying to rotate both stacks in the same direction.
+First, it emulates rotating in the normal direction with try_rr_way() and then
+in the reverse direction with try_rrr_way. Both are successively compared with
+best_course, if the number of steps needed is lower, it overwrites best_course
+with this_course*/
 void	synch_rotation(t_place place_a, t_place place_b, t_course *best_course)
 {
 	t_course	this_course;
@@ -39,8 +39,8 @@ void	synch_rotation(t_place place_a, t_place place_b, t_course *best_course)
 		ft_memcpy(best_course, &this_course, sizeof(t_course));
 }
 
-/*Calcula los movimientos necesarios para rotar position, hasta el top de su
-pila con rotaciones simples en sentido normal. Añade el resultado a course*/
+/*Calculates the movements necessary to rotate position to the top of its
+stack with simple rotations in the normal direction. Adds the result to course*/
 static void	rotate_stack(t_course *course, t_place position)
 {
 	course->steps += position.level;
@@ -50,9 +50,8 @@ static void	rotate_stack(t_course *course, t_place position)
 		course->rb = position.level;
 }
 
-//no separar de async_rotation
-/*Calcula los movimientos necesarios para rotar position, hasta el top de su
-pila con rotaciones simples en sentido inverso. Añade el resultado a course*/
+/*Calculates the movements necessary to rotate position to the top of its
+stack with simple reverse rotations. Adds the result to course*/
 static void	reverse_rotate_stack(t_course *course, t_place position)
 {
 	course->steps += position.reverse_level;
@@ -62,12 +61,12 @@ static void	reverse_rotate_stack(t_course *course, t_place position)
 		course->rrb = position.reverse_level;
 }
 
-/*Calcula los movimientos para situar position_in_a y Position_in_b en el
-top de sus respectivas pilas. Y lo hace de tal manera que una rote en un sentido
-y la otra rote en el sentido inverso. Evalua en que direccion sería menos
-costoso, y calcula las instrucciones exactas almacenandolas en this_course.
-si this_course requiere un numero de instruciones inferior a best_course, lo
-sobreescribe. */
+/*Calculates the movements to place position_in_a and position_in_b at the
+top of their respective stacks. It does so in such a way that one rotates in one
+direction and the other rotates in the opposite direction. It evaluates which
+direction would be less costly and calculates the exact instructions, storing
+them in this_course. If this_course requires fewer instructions than best_course,
+it overwrites best_course. */
 void	asynch_rotation(t_place position_in_a, t_place position_in_b,
 	t_course *best_course)
 {
@@ -91,8 +90,8 @@ void	asynch_rotation(t_place position_in_a, t_place position_in_b,
 		ft_memcpy(best_course, &this_course, sizeof(t_course));
 }
 
-/*Recorre todo el stack_b comprobando qué elemento es menos costoso colocar
-en su lugar en el stack_a*/
+/*Iterates through the entire stack_b checking which element is the least
+costly to place in its position in stack_a*/
 void	find_rigth_course(t_ring *stack_a, t_ring *stack_b,
 t_course *best_course)
 {

@@ -6,30 +6,30 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 12:02:27 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 17:27:34 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:35:24 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/ring.h"
 #include <stdlib.h>
 
-/* Alloca espacio para un struct t_ring y para el bufer contenido en el.
-La capacidad maxima del array será el parametro size.
-El buffer (buff) tiene un tamaño de size+1, para hevitar que algunas funciones
-posteriores requieran una logica diferente según el buffer esté lleno o vacío.
+/* Allocates space for a struct t_ring and for the buffer contained in it.
+The maximum capacity of the array will be the parameter size.
+The buffer (buff) has a size of size+1, to avoid that some subsequent functions
+require different logic depending on whether the buffer is full or empty.
 `circular_array->head = size / 2 + 1;`
--`size / 2` buscamos alejar head y tail de el final del array, puesto que copiar
-	ring[0] en ring[50] es la operacion más costosa posible.
--`+1`ring_add_head() coloca un elemento en head-1, para que con un solo elemento
-head y tail sean la misma posicion, necesitamos empezar con head adelantado
+-`size / 2` we aim to keep head and tail away from the end of the array, since
+copying ring[0] to ring[50] is the most costly operation possible.
+-`+1`ring_add_head() places an element at head-1, so that with a single element
+head and tail are at the same position, we need to start with head advanced
 (head = tail+1)
-Head: elemento en el top (level 0)
-Tail: ultimo elemento del array
-Fill: cantidad de elementos actuelmente en el array
-Max_fill: maximo numero de elementos que pueden ser almacenados en el array
-Slots: siempre es igual a max_fill+1, que siempre haya almenos un indice vacío
-en el buffer, facilita la implementacion de las funciones que lo manipulan.
-El puntero retornado debe ser liverado con ring_free*/
+Head: element at the top (level 0)
+Tail: last element of the array
+Fill: number of elements currently in the array
+Max_fill: maximum number of elements that can be stored in the array
+Slots: always equal to max_fill+1, ensuring there is always at least one empty
+index in the buffer, facilitating the implementation of the functions that
+manipulate it. The returned pointer must be freed with ring_free*/
 t_ring	*ring_init(int size)
 {
 	t_ring	*circular_array;

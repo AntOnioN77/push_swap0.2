@@ -6,14 +6,14 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:33:27 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 17:22:55 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:30:38 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/ring.h"
 
-/*retorna el numero, que quedara en la nºesima posicion cuando el stack esté
-ordenado*/
+/* returns the number that will be in the nth position when the stack is
+sorted */
 int	ring_find_nth(t_ring *ring, int n_elements, int nth)
 {
 	int	i;

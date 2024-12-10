@@ -6,13 +6,13 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:10:40 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 17:30:31 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:37:35 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*Recibe <index>, y t_ring.slots. Retorna el indice anterior. Cuando <index>
-sea 0 retornara el ultimo indice del buffer t_ring.buff, de acuerdo con la
-lógica circular*/
+/*Receives <index>, and t_ring.slots. Returns the previous index. When <index>
+is 0, it will return the last index of the buffer t_ring.buff, according to the
+circular logic*/
 int	ring_prev_index(int index, int slots)
 {
 	return ((index - 1 + slots) % slots);

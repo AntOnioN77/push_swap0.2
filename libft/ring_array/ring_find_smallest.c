@@ -6,14 +6,14 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:18:40 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 17:22:22 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:30:59 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/ring.h"
 #include <limits.h>
 
-/*Busca el valor mas bajo contenido en el anillo*/
+/* Finds the smallest value contained in the ring */
 int	ring_find_smallest(t_ring *stack)
 {
 	int	i;

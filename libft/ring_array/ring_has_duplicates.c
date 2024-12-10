@@ -6,13 +6,13 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 12:21:51 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 17:27:19 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:33:31 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/ring.h"
 
-/*Compara todos los elementos de la lista buscando duplicados.*/
+/* Compares all elements of the list looking for duplicates. */
 t_bool	ring_has_duplicates(t_ring *a)
 {
 	t_level	current;

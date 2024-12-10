@@ -6,14 +6,14 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 00:16:27 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/11 00:16:45 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:49:25 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/headers/ring.h"
 
-//envia a la pila b el tercer chunk, acumulado en el back de la pila a*/
+// sends the third chunk to stack b, accumulated at the back of stack a
 void	pb_lasts(t_ring *a, t_ring *b, int bigest, int smalest)
 {
 	while (a->fill > 2)
@@ -25,7 +25,6 @@ void	pb_lasts(t_ring *a, t_ring *b, int bigest, int smalest)
 	}
 }
 
-//Envia a la pila b tres chunks, con los valores medios maximos y minimos.
 void	preorder_many(t_ring *a, t_ring *b, int bigest, int smalest)
 {
 	int	first_terctil;

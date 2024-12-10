@@ -6,16 +6,16 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:39:33 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 17:31:06 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:36:11 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*ring->buff[index] ... cuando hablamos de index, no nos referimos al lugar que
-ocupa con respecto a head, sino a la posicion en el buffer clasico que empleamos
-para "simular el comportamiento circular"
-Recibe <index>, y t_ring.slots. Retorna el indice siguiente. Cuando <index> sea
-el ultimo indice válido del buffer t_ring.buff retornara 0 (primer indice), de
-acuerdo con la lógica circular*/
+/*ring->buff[index] ... when we talk about index, we are not referring to the
+position with respect to head, but to the position in the classic buffer that
+we use to "simulate circular behavior"
+Receives <index>, and t_ring.slots. Returns the next index. When <index> is
+the last valid index of the buffer t_ring.buff, it will return 0 (first index),
+according to the circular logic*/
 int	ring_next_index(int index, int slots)
 {
 	return ((index + 1) % slots);

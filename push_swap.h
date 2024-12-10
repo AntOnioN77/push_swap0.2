@@ -70,4 +70,4 @@ void	clean_course(t_course *course);
 void	try_rr_way(t_place deeper, t_place higher, t_course *course);
 void	try_rrr_way(t_place place_a, t_place place_b, t_course *course);
 
-#endif /* CIRCULAR_ARRAY_H */
+#endif
