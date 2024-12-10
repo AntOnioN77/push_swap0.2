@@ -58,9 +58,7 @@ void preorder_many(t_ring *a, t_ring *b, int bigest, int smalest)
 		if (ring_get_head(a) == bigest || ring_get_head(a) == smalest)
 			ra(a);
 		else if (ring_get_head(a) > second_terctil) //mayores
-		{
 			ra(a);
-		}
 		else if (ring_get_head(a) > first_terctil) //medios
  		{
 			pb(a, b);
@@ -95,20 +93,13 @@ int is_correlative(t_ring *a, int smalest)
 	int check;
 
 	level = ring_find_value(a, smalest);
-//	if (level < 0)
-//		level = a->fill - level;
+
 	check = a->fill;
 	while (check > 0)
 	{
 		level++;
-//printf("LEVEL %d\n", level);
 		if (ring_get_level(a, level - 1) > ring_get_level(a, level))
-		{
-//printf("-----BREAK content lvl:%d y %d\n", ring_get_level(a, level - 1) ,ring_get_level(a, level));
-//printf("headindex:%d, tail index%d\n",a->head, a->tail);
 			break;
-		}
-	//	printf("compara %d con %d\n", ring_get_level(a, level - 1), ring_get_level(a, level));
 		check--;
 	}
 	if (check == 1)

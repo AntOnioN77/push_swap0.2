@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsargs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 12:31:07 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/09 16:57:13 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:31:06 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ static int	fill_stack(t_ring *arr, int argc, char **argv)
 	return (OK);
 }
 
-
-// TO DO
 int countargs(char **argv)
 {
 	int n;
@@ -72,25 +70,6 @@ int countargs(char **argv)
 		i++;
 	}
 	return(n);
-}
-
-void free_all(char **args)
-{
-    char **temp;
-
-    if (!args)
-        return;
-    
-    temp = args;
-    
-    while (*temp)
-    {
-        free(*temp);
-        *temp = NULL;  // Opcional pero buena práctica
-        temp++;
-    }
-    
-    free(args);
 }
 
 //retorna 1 si 
@@ -110,7 +89,7 @@ void split_all(int argc, char **argv, char **args)
 		tmp = ft_split(argv[i], ' ');
 		if(tmp == NULL)
 		{
-			free_all(args);
+			ft_free_split(args);
 			exit(EXIT_FAILURE);
 		}
 		while (tmp[j])
@@ -132,7 +111,7 @@ void handle_error(void *to_free, void (*free_func)(void *))
 	write(2, "Error\n", 6);
 	exit (EXIT_FAILURE);
 }
-//separar el codigo de inicializacion de pilas del parseo
+
 void	parsargs(int argc, char **argv, t_ring **a, t_ring **b)
 {
 	int n_args;
@@ -145,12 +124,12 @@ void	parsargs(int argc, char **argv, t_ring **a, t_ring **b)
 	ft_bzero(args, (n_args + 1) * sizeof(char*));
 	split_all(argc, argv, args);
 	if (!are_valid_int(n_args, args))
-		handle_error(args, (void (*)(void *))free_all);
+		handle_error(args, (void (*)(void *))ft_free_split);
 	*a = ring_init(n_args);
 	if (*a == NULL)
-		handle_error(args, (void (*)(void *))free_all);
+		handle_error(args, (void (*)(void *))ft_free_split);
 	fill_stack(*a, n_args, args);
-	free_all(args);
+	ft_free_split(args);
 	if (ring_has_duplicates(*a))
 		handle_error(*a, (void (*)(void *))ring_free);
 	*b = ring_init(n_args);

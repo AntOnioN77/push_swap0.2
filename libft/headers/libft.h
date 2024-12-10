@@ -51,6 +51,7 @@ int		ft_toupper(int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
+void	ft_free_split(char **args);
 int		ft_count_substr(const char *str, char tkn);
 char	*ft_itoa(int n);
 void	ft_putnbr_fd(int n, int fd);

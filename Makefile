@@ -4,9 +4,9 @@ CFLAGS = -Wall -Wextra -Werror
 CPPFLAGS = -I. -I/libft/headers
 DBGFLAGS = -g3
 LDFLAGS = -L ./libft -lft
-SOURCES = chunker.c find_right_course.c main.c\
+SOURCES = src/preorder.c src/find_right_course.c main.c\
 src/instructions/sa_sb_ss.c src/instructions/pa_pb.c src/instructions/ra_rb_rr.c\
-src/instructions/rra_rrb_rrr.c src/parsing.c
+src/instructions/rra_rrb_rrr.c src/parsargs.c
 OBJECTS = $(SOURCES:.c=.o)
 HEADERS = libft/headers/libft.h libft/headers/ring.h push_swap.h
 

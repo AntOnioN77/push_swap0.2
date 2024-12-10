@@ -6,7 +6,7 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:34:49 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 10:59:49 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:23:44 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,6 @@ void	try_rr_way(t_place deeper , t_place higher, t_course *course)
 	course->rrb = 0;
 	course->pa	= 1;
 }
-/*
-//En el contexto de try_rr_way() necesitabamos no una referencia al mas --INNECESARIA-- 
-//no separar esta función de run try_rrr_way
-static void	rename_a_b(t_place *deeper, t_place *higher, t_place **place_a ,t_place **place_b)
-{
-	if (deeper->stack_name == 'a')
-	{
-		*place_a = deeper;
-		*place_b = higher;
-	}
-	else
-	{
-		*place_a = higher;
-		*place_b = deeper;
-	}
-}
-*/
 
 //no separar esta funcion de sync_rotation()
 /*Asigna a <course> los pasos necesarios para situar tanto <a> como <place_b> en el head de sus respectivos stacks,
