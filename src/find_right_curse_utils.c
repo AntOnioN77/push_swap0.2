@@ -6,7 +6,7 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 15:31:38 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 23:58:35 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:20:26 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ t_place	setup_place(t_ring *stack, t_level level, char stack_name)
 
 	new_place.stack_name = stack_name;
 	new_place.level = level;
-	new_place.middel_of_stack = stack->fill / 2;
-
-	new_place.stack_size = stack->fill;
 	if (level == 0)
 		new_place.reverse_level = 0;
 	else

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   preorder.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/11 00:16:27 by antofern          #+#    #+#             */
+/*   Updated: 2024/12/11 00:16:45 by antofern         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/headers/ring.h"
@@ -66,7 +77,6 @@ int	is_correlative(t_ring *a, int smalest)
 	int		check;
 
 	level = ring_find_value(a, smalest);
-
 	check = a->fill;
 	while (check > 0)
 	{
@@ -89,7 +99,7 @@ void	preorder(t_ring *a, t_ring *b)
 	smalest = ring_find_smallest(a);
 	if (!is_correlative(a, smalest))
 	{
-		if(a->fill > 70)
+		if (a->fill > 70)
 			preorder_many(a, b, bigest, smalest);
 		else
 			preorder_few(a, b, bigest, smalest);

@@ -6,7 +6,7 @@
 /*   By: antofern <antofern@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:54:45 by antofern          #+#    #+#             */
-/*   Updated: 2024/12/10 23:39:01 by antofern         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:22:37 by antofern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ra(t_ring *a)
 		return ;
 	if (ring_rotate(a) == ERROR)
 		return ;
-	write(1,"ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_ring *b)
